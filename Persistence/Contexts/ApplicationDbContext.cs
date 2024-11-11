@@ -9,9 +9,7 @@ namespace Persistence.Contexts
         {
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
-        public DbSet<Place> Places { get; set; }
         public DbSet<Categories> Sugerencia { get; set; }
-        public DbSet<PlacesPhotos> PlacesPhotos { get; set; }
         public DbSet<SubscriptionType> SubscriptionTypes  { get; set; }
         public DbSet<SubscriptionUser> SubscriptionUsers { get; set; }
         public DbSet<Rol> Rol { get; set; }

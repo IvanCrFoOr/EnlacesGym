@@ -17,7 +17,7 @@ namespace Persistence.Repositories
 
         public async Task<List<Categories>> GetAllByPlaceIdAsync(int placeId)
         {
-            return await _categories.Include(x => x.Place)
+            return await _categories
                 .Where(c => c.PlaceId == placeId).AsNoTracking().ToListAsync();
         }
     }

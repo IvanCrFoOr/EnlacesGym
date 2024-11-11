@@ -8,6 +8,7 @@ using MediatR;
 using Application.Features.Places;
 using Application.Features.Places.Queries;
 using Application.Features.Places.Commands;
+using Application.Features.Places.Queries.GetAllUsers;
 
 namespace PlaceWeb.Controllers
 {
@@ -15,25 +16,29 @@ namespace PlaceWeb.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _configuration;
-        private readonly IPlaceRepositoryAsync _placeRepositoryAsync;
+        
         private IMediator _mediator;
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IPlaceRepositoryAsync placeRepositoryAsync, IMediator mediator)
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IMediator mediator)
         {
             _logger = logger;
             _configuration = configuration;
-            _placeRepositoryAsync = placeRepositoryAsync;
             _mediator = mediator;
         }
 
         public async Task<IActionResult> Index()
         {
+            var list = await _mediator.Send(new GetAllCostsActivesQuery());
+            var costsmodel = new List<CostsViewModel>();
+            costsmodel = (from c in list.Data
+                          select new CostsViewModel() 
+                          { 
+                          Id = c.Id,
+                          Cost = c.AmountCost,
+                          Name = c.CostName
+                          }).ToList();
 
-            var result = await _mediator.Send(new SearchPlaceQuery() { place = "" });
-            //var places = new List<PalcesViewModel>();
-
-            //places = (from s in result.Data select new PalcesViewModel() { Id = s.Id, Name = s.DescriptionPlace }).ToList();
-
-            return View();
+                
+            return View(costsmodel);
         }
 
         public IActionResult Privacy()
@@ -42,11 +47,11 @@ namespace PlaceWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Search([FromBody] string searchPlace)
+        public async Task<ActionResult> Search(string search)
         {
-            var result = await _mediator.Send(new PlacesQuery() { LikePlace = searchPlace });
+            var result = await _mediator.Send(new GetAllUsersQuery() { name = search });
 
-            return View(result);
+            return Json(new { success=true, result });
         }
 
         public async Task<IActionResult> Details(int id)
@@ -69,19 +74,19 @@ namespace PlaceWeb.Controllers
 
         public async Task<IActionResult> Photos(int id)
         {
-            var resutl = await _mediator.Send(new ViewPhotosCommand() { Id = id });
-            var images = new List<PHotosPlaceViewModel>();
-            images = (from i in resutl.Data
-                      select new PHotosPlaceViewModel()
-                      {
-                          created_at = i.created_at,
-                          height = i.height,
-                          prefix = i.prefix,
-                          suffix = i.suffix,
-                          width = i.width,
-                          id = i.id
-                      }).ToList();
-            return View(images);
+            //var resutl = await _mediator.Send(new ViewPhotosCommand() { Id = id });
+            //var images = new List<PHotosPlaceViewModel>();
+            //images = (from i in resutl.Data
+            //          select new PHotosPlaceViewModel()
+            //          {
+            //              created_at = i.created_at,
+            //              height = i.height,
+            //              prefix = i.prefix,
+            //              suffix = i.suffix,
+            //              width = i.width,
+            //              id = i.id
+            //          }).ToList();
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

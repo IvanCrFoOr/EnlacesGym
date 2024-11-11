@@ -20,42 +20,40 @@ namespace Application.Features.Places.Commands
         public class ViewPhotosCommandHandler : IRequestHandler<ViewPhotosCommand, Response<List<PhotosViewModel>>>
         {
             private readonly ICategoryRespositoryasync _categoryRespositoryasync;
-            private readonly IPlacesPhotosRepositoryAsync _placesPhotos;
 
-            public ViewPhotosCommandHandler(ICategoryRespositoryasync categoryRespositoryasync, IPlacesPhotosRepositoryAsync placesPhotos)
+            public ViewPhotosCommandHandler(ICategoryRespositoryasync categoryRespositoryasync)
             {
                 _categoryRespositoryasync = categoryRespositoryasync;
-                _placesPhotos = placesPhotos;
             }
 
             public async Task<Response<List<PhotosViewModel>>> Handle(ViewPhotosCommand query, CancellationToken cancellationToken)
             {
                 var place = await _categoryRespositoryasync.GetAllByPlaceIdAsync(query.Id);
-                string fsqid = place.FirstOrDefault().Place.Fsq_id;
-                string url = $"https://api.foursquare.com/v3/places/{fsqid}/photos";
-                var clientOptions = new RestClientOptions(url);
-                var client = new RestClient(clientOptions);
-                var request = new RestRequest("");
-                request.AddHeader("Accept", "application/json");
-                request.AddHeader("Authorization", "fsq3suR9gk4mJN/Pp1DqLzVKyOgHS9ekL3P274kHAMt6s9M=");
-                var response = client.Get(request);
-                var content = response.Content;
-                var images = JsonConvert.DeserializeObject<List<PhotosViewModel>>(content);
+                //string fsqid = place.FirstOrDefault().Place.Fsq_id;
+                //string url = $"https://api.foursquare.com/v3/places/{fsqid}/photos";
+                //var clientOptions = new RestClientOptions(url);
+                //var client = new RestClient(clientOptions);
+                //var request = new RestRequest("");
+                //request.AddHeader("Accept", "application/json");
+                //request.AddHeader("Authorization", "fsq3suR9gk4mJN/Pp1DqLzVKyOgHS9ekL3P274kHAMt6s9M=");
+                //var response = client.Get(request);
+                //var content = response.Content;
+                //var images = JsonConvert.DeserializeObject<List<PhotosViewModel>>(content);
 
-                foreach (var img in images)
-                {
-                    var model = new PlacesPhotos()
-                    {
-                        CreateDate = img.created_at,
-                        Height = img.height,
-                        RowId = img.id,
-                        UrlPhoto = img.suffix + img.prefix,
-                        Width = img.width
-                    };
-                    await _placesPhotos.AddAsync(model, "eliot369@gmail.com", 1, "Test", false);
-                }
+                //foreach (var img in images)
+                //{
+                //    var model = new PlacesPhotos()
+                //    {
+                //        CreateDate = img.created_at,
+                //        Height = img.height,
+                //        RowId = img.id,
+                //        UrlPhoto = img.suffix + img.prefix,
+                //        Width = img.width
+                //    };
+                //    await _placesPhotos.AddAsync(model, "eliot369@gmail.com", 1, "Test", false);
+                //}
 
-                return new Response<List<PhotosViewModel>>(images);
+                return new Response<List<PhotosViewModel>>();
             }
         }
     }

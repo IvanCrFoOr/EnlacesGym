@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace PlaceWeb.Models
 {
-    public class PalcesViewModel
+    public class CostsViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public decimal Cost { get; set; }
     }
 }

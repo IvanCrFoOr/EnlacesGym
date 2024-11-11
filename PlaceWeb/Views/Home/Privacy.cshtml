@@ -1,6 +1,123 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Home Page";
 }
-<h1>@ViewData["Title"]</h1>
+<script src="~/jquery/lib/jquery/jquery.js"></script>
+<script src="~/jquery/lib/jquery/jquery.min.js"></script>
+<style>
+    .form-validation: {
+        .container
 
-<p>Use this page to detail your site's privacy policy.</p>
+    {
+        max-width: 960px;
+    }
+
+    .border-top {
+        border-top: 1px solid #e5e5e5;
+    }
+
+    .border-bottom {
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .border-top-gray {
+        border-top-color: #adb5bd;
+    }
+
+    .box-shadow {
+        box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    }
+
+    .lh-condensed {
+        line-height: 1.25;
+    }
+
+    }
+</style>
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72" />
+            <h2>GYM </h2>
+            <p class="lead">Lion vs Lion</p>
+        </div>
+        <div class="row">
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3">Formulario de Inscripción</h4>
+                <form class="form-validation" novalidate method="post" action="Home/PostInscription">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="searchName">Buscar</label>
+                            <input type="text" class="form-control" id="searchName" placeholder="Buscar" value="">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="search">Frecuencia</label>
+                            <select class="form-control" id="search"></select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName">Nombre</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Valid first name is required.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName">Apellidos</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Valid last name is required.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Valid last email is required.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="phone">Teléfono</label>
+                            <input type="text" class="form-control" id="phone" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Valid last phone is required.
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Registrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+@* <script type="text/javascript">
+    function funcSearch() {
+
+        var itmSearch = document.getElementById('place').value;
+        alert(itmSearch);
+        var url = "Home/Search";
+        const placeItem = {
+            searchPlace: itmSearch
+        }
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(itmSearch),
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        }).then(function (response) {
+            if (response.ok)
+                return response.text()
+            else
+                alert('Sucedio un error')
+        }).then(function (Data) {
+            if (Data != "")
+                alert(Data)
+            else
+                input.each(function () {
+                    $(this).parent("td").html($(this).val())
+                })
+        });
+    }
+</script>
+ *@

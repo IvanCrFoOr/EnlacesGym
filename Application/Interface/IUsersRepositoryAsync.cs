@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interface
 {
-    public interface IPlacesPhotosRepositoryAsync : IGenericRepositoryAsync<PlacesPhotos>
+    public interface IUsersRepositoryAsync : IGenericRepositoryAsync<Usuario>
     {
     }
 }

@@ -17,10 +17,9 @@ namespace Persistence
 
             services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
             #region Entities
-            services.AddTransient<IPlaceRepositoryAsync, PlaceRepositoryAsync>();
             services.AddTransient<ICategoryRespositoryasync, CategoryRespositoryasync>();
-            services.AddTransient<IPlacesPhotosRepositoryAsync, PlacesPhotosRepositoryAsync>();
             services.AddTransient<ICatCostsRepositoryAsync, CatCostsRepositoryAsync>();
+            services.AddTransient<IUsersRepositoryAsync, UsersRepositoryAsync>();
             #endregion
         }
     }

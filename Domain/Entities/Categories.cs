@@ -18,7 +18,6 @@ namespace Domain.Entities
         public string IconSufix { get; set; }
         public int PlaceId { get; set; }
 
-        [JsonIgnore]
-        public virtual Place Place { get; set; }
+        
     }
 }
