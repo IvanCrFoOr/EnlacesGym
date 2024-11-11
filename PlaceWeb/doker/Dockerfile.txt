@@ -1,0 +1,21 @@
+
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS base
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+
+FROM mc.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+COPY ["PlaceWeb/PlaceWeb.csproj", "PlaceWeb/"]
+RUN dotnet restore "Placeweb/PlaceWeb.csproj" -c Relase -o app/build
+COPY ..
+WORKDIR "src/PlaceWeb"
+RUN dotnet build "PlaceWeb.csproj" -c Relase -o app/build
+
+FROM build As publish
+RUN dotnet publish "PlaceWeb.csproj" -c Relase -o app/publish
+
+FROM base As publish
+WORKDIR /app
+COPY --from=publish app/publish .
+ENTRYPOINT ["dotnet", "PlaceWeb.dll"]

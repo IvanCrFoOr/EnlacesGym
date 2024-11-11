@@ -1,0 +1,23 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Algo page";
+}
+<div class="justify-content-md-between">
+    <h3>Busca un Lugar</h3>
+    <p>busca un lugar que se encuentre dentro del nombre que escribas</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="form-control-lg">
+            <label for="search">Buscar Lugar</label>
+            <input type="text" class="form-control" id="search" />
+        </div>
+    </div>
+    <div class="row">
+        <input type="submit" class="btn-primary" />
+    </div>
+</div>
+
+<a class="nav-link text-dark" asp-area="" asp-page="@Url.Action("index","Place")">AQUI</a>

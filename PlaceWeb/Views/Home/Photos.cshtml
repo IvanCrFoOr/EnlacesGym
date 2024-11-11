@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<PHotosPlaceViewModel>;
+<table class="table-info">
+    <thead>
+        <tr>
+            <td>Imagen</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (PlaceWeb.Models.PHotosPlaceViewModel img in Model)
+            {
+                <td>
+                    @img.id <img src="@img.suffix + @img.prefix" width="@img.width" height="@img.height">
+                </td>
+            }
+        </tr>
+    </tbody>
+</table>

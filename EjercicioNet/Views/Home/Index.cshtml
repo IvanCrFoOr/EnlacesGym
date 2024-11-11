@@ -1,0 +1,10 @@
+﻿
+@{
+}
+
+<div class="container">
+    @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <button type="submit" class="btn-primary">Buscar</button>
+    }
+</div>
