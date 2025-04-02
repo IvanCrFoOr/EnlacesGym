@@ -13,5 +13,13 @@ namespace Persistence.Repositories
         {
             _usuarios = dbContext.Set<Usuario>();
         }
+
+        public Task<Usuario> GetUserByEmailAsync(string email)
+        {
+            return _usuarios.Include(u => u.Rol)
+                //.ThenInclude(t => t.Modulo)
+                //.Include(u => u.UserManagementDisables).ThenInclude(t => t.DisableReason).Include(r => r.CatArea).Include(u => u.CatCountry)
+                .FirstOrDefaultAsync(u => u.Names == email);
+        }
     }
 }
