@@ -1,5 +1,4 @@
 ﻿using Application.Behaviours;
-using Application.Services.Inspector;
 using AutoMapper;
 using FluentValidation;
 using MediatR;
@@ -16,6 +15,17 @@ namespace Application
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+        }
+
+        public static void AddApplicationMappers(this IServiceCollection services)
+        {
+            var config = new MapperConfiguration(config =>
+            {
+            });
+
+
+            IMapper mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
         }
     }
 }

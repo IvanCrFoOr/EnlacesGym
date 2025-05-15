@@ -9,11 +9,14 @@ namespace Persistence
 {
     public static class ServiceRegistration
     {
-        public static void AddPersistenceInfraestructure(this IServiceCollection services, IConfiguration configuration)
+        public static void AddPersistenceInfraestructure(this IServiceCollection services, string connetionString)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
-                configuration.GetConnectionString("Develop"),
-                b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+                connetionString,
+                b => {
+                    b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);
+                    b.UseNetTopologySuite();
+                    }), ServiceLifetime.Transient);
 
             services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
             #region Entities

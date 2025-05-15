@@ -13,8 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infraestructure", "Infraest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{BAF166F3-1BD8-4C8D-90DB-F6FCC1792D3B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlaceWeb", "PlaceWeb\PlaceWeb.csproj", "{84533470-6A40-4FB1-91A2-29DFCCC2D151}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnlacesGymsWeb.Server", "EnlacesGymsWeb\EnlacesGymsWeb.Server\EnlacesGymsWeb.Server.csproj", "{D672CDCD-7E89-46B5-8E85-8F5743DB2C44}"
 EndProject
 Global
@@ -35,10 +33,6 @@ Global
 		{BAF166F3-1BD8-4C8D-90DB-F6FCC1792D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAF166F3-1BD8-4C8D-90DB-F6FCC1792D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAF166F3-1BD8-4C8D-90DB-F6FCC1792D3B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{84533470-6A40-4FB1-91A2-29DFCCC2D151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{84533470-6A40-4FB1-91A2-29DFCCC2D151}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{84533470-6A40-4FB1-91A2-29DFCCC2D151}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{84533470-6A40-4FB1-91A2-29DFCCC2D151}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D672CDCD-7E89-46B5-8E85-8F5743DB2C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D672CDCD-7E89-46B5-8E85-8F5743DB2C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D672CDCD-7E89-46B5-8E85-8F5743DB2C44}.Release|Any CPU.ActiveCfg = Release|Any CPU

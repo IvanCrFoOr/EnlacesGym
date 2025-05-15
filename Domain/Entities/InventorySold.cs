@@ -8,16 +8,17 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class SubscriptionUser : BaseEntity
+    public class InventorySold : BaseEntity
     {
-        public DateTime? subscriptionDate { get; set; }
         public int UsuarioId { get; set; }
-        public int SubscriptionTypeId { get; set; }
-        public bool IsPayment { get; set; } //Estapagado
+        public int CatInventorySuplementsId { get; set; }
+        public DateTime DateSell { get; set; }
+        public decimal PriceSell { get; set; }
+
 
         [Required]
         public virtual Usuario Usuario { get; set; }
         [Required]
-        public virtual SubscriptionType SubscriptionType { get; set; }
+        public virtual CatInventorySuplements CatInventorySuplements { get; set; }
     }
 }
